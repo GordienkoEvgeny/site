@@ -57,16 +57,15 @@ const Login = () => {
       try {
         // console.log(paths.loginPath());
         const response = await axios.post(paths.loginPath(), dataToSend);
-        // const response = await axios.post(https://reqres.in/api/users/, dataToSend);
         console.log(response, 'response');
         localStorage.setItem('user', JSON.stringify(response.data));
         auth.logIn();
-        redirect(paths.chatPath());
+        redirect(paths.mainPagePath());
       } catch (err) {
         // eslint-disable-next-line functional/no-conditional-statements
-        if (err.response.status === 404) {
+        if (err.response.status === 400) {
           setSuccessAuth(true);
-          setErrorAuth(t('errNamePass'));
+          setErrorAuth(t('errEmailPass'));
         }
       }
     },
@@ -86,6 +85,12 @@ const Login = () => {
             </div>
             <button onSubmit={formik.handleSubmit} disabled={formik.isSubmitting} type="submit" className="login__form-btn login__form-btn--text">{t('logIn')}</button>
           </form>
+          <div className="registration__content">
+            <div className="registration__content-inner">
+              <span className="registration__content-text">{t('noAccount')}</span>
+              <a className="registration__link" href={paths.signupPath()}>{t('registration')}</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>

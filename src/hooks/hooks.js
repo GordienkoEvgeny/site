@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { LoginContext, ChatContext } from '../contexts/contexts.js';
+import { LoginContext, MainContext } from '../contexts/contexts.js';
 
 export const useAuthorization = () => useContext(LoginContext);
-export const useChatApi = () => useContext(ChatContext);
+export const useChatApi = () => useContext(MainContext);

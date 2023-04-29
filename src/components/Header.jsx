@@ -1,16 +1,22 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useTranslation } from 'react-i18next';
+import paths from '../paths';
 
-const Header = () => (
-  <header className="header">
-    <div className="container">
-      <div className="header__content">
-        <div className="header__logo">
-          <a className="header__logo-text" href="/">
-            DREAM TEAM
-          </a>
+const Header = () => {
+  const { t } = useTranslation();
+  return (
+    <header className="header">
+      <div className="container">
+        <div className="header__content">
+          <div className="header__logo">
+            <a className="header__logo-text" href={paths.mainPagePath()}>
+              {t('navbarName')}
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
-);
+    </header>
+  );
+};
 export default Header;

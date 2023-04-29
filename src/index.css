@@ -26,16 +26,17 @@ body{
 .header__logo-text{
     font-size: 24px;
     line-height: 29px;
+    text-decoration: none;
 }
 .login__content{
     margin: 25px 0 25px 0;
     background-color: #ffffff;
-    width: 100%;
     display: flex;
     justify-content: center;
-    height: 100vh;
+    height: 75vh;
     box-shadow: 0 4px 20px #512689;
     border-radius: 16px;
+    position: relative;
 }
 .login__form{
     justify-content: center;
@@ -45,7 +46,7 @@ body{
     padding: 16px;
     gap: 24px;
     background: #FFFFFF;
-    margin-top: 269px;
+    margin-top:100px;
 
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     border-radius: 16px;
@@ -175,11 +176,12 @@ body{
     color: #512689;
     border:1px solid #512689;
 }
-.text-danger {
+.text-danger,
+.alert {
     margin-top: 8px;
     font-size: 16px;
     -webkit-animation: blink 1s linear infinite;
-    animation: blink 1.3s linear infinite;
+    animation: blink 1.2s linear infinite;
     font-weight: normal;
 }
 
@@ -187,4 +189,40 @@ body{
     0% { color: #F00; }
     50% { color: #FBB; }
     100% { color: #F00; }
+}
+.footer__content{
+    height: 60px;
+    background-color: #fbfbfb;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px #512689;
+}
+.footer__content-inner{
+    display: flex;
+    justify-content: center;
+}
+.footer__link{
+    padding-top: 20px;
+    text-decoration: none;
+    font-size: 16px;
+    color: black;
+}
+.registration__content{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 25px;
+}
+.registration__content-inner{
+    margin: 0 auto;
+}
+.registration__content-inner{
+    display: flex;
+    justify-content: center;
+}
+.registration__content-text{
+    font-size: 16px;
+}
+.registration__link{
+    font-size: 16px;
+    text-decoration: none;
 }

@@ -1,9 +1,9 @@
 const apiPath = 'https://reqres.in/api';
 
 export default {
-  signupPath: () => [apiPath, '/signup'].join('/'),
+  signupPath: () => '/signup',
   loginPath: () => [apiPath, 'login'].join('/'),
   loginPagePath: () => '/login',
   usersPath: () => [apiPath, 'data'].join('/'),
-  chatPath: () => '/',
+  mainPagePath: () => '/',
 };
