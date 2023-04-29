@@ -1,4 +1,4 @@
-const apiPath = '/api/v1';
+const apiPath = 'https://reqres.in/api';
 
 export default {
   signupPath: () => [apiPath, '/signup'].join('/'),

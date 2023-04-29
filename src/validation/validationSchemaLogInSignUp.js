@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-const validation = (schema, name, translate) => {
+const validation = (schema, translate) => {
   const vSchema = (errName, minCountSymbol, maxCountSymbol, t) => Yup.string().trim().min(
     minCountSymbol,
     t(errName),
@@ -10,7 +10,7 @@ const validation = (schema, name, translate) => {
   const count = schema ? 6 : 4;
   return ({
     validationSchema: Yup.object().shape({
-      [name]: vSchema('errNameSymbol3', count, 20, translate),
+      username: vSchema('errNameSymbol3', count, 20, translate),
       password: vSchema('errPassSymbol6', count, 20, translate),
       passwordConfirmation: confirmPass,
     }),

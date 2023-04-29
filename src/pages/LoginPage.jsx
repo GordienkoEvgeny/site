@@ -7,7 +7,8 @@ import { useTranslation } from 'react-i18next';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import logInSignUpSchema from '../validation/validationSchemaLogInSignUp';
+// import logInSignUpSchema from '../validation/validationSchemaLogInSignUp';
+import * as Yup from 'yup';
 import paths from '../paths';
 import { useAuthorization } from '../hooks/hooks';
 import Input from '../components/Input';
@@ -21,33 +22,63 @@ const Login = () => {
   const formAlert = cn({ 'alert-danger form-control is-invalid': successAuth, alert: successAuth });
   const formik = useFormik({
     initialValues: {
-      loginUserName: '',
+      username: '',
+      email: '',
       password: '',
     },
-    validationSchema: logInSignUpSchema.validationSchema,
+    validationSchema: Yup.object().shape({
+      username: Yup.string().trim().min(
+        3,
+        t('errNameSymbol3'),
+      )
+        .max(20, t('errNameSymbol20'))
+        .required(t('errField')),
+      email: Yup.string().email(t('emailErr')).required(t('errField')),
+      password: Yup.string().trim().min(
+        6,
+        t('errPassSymbol6'),
+      )
+        .max(20, t('errPassSymbol20'))
+        .required(t('errField')),
+      // passwordConfirmation: Yup.string()
+      //   .oneOf([Yup.ref('password'), null], t('errPasswordMatch'))
+      //   .required(t('errPasswordMatch')),
+    }),
     onSubmit: async (values) => {
-      const dataToSend = { username: values.loginUserName, password: values.password };
+      // console.log(values);
+      // eslint-disable-next-line max-len
+      // console.log(values, ' values');
+      const dataToSend = {
+        // username: values.username,
+        email: values.email,
+        password: values.password,
+      };
+      console.log(dataToSend, 'data');
       try {
+        // console.log(paths.loginPath());
         const response = await axios.post(paths.loginPath(), dataToSend);
+        // const response = await axios.post(https://reqres.in/api/users/, dataToSend);
+        console.log(response, 'response');
         localStorage.setItem('user', JSON.stringify(response.data));
         auth.logIn();
         redirect(paths.chatPath());
       } catch (err) {
         // eslint-disable-next-line functional/no-conditional-statements
-        if (err.response.status === 401) {
+        if (err.response.status === 404) {
           setSuccessAuth(true);
           setErrorAuth(t('errNamePass'));
         }
       }
     },
   });
+  console.log(formik.errors);
   return (
     <div className="login">
       <div className="container">
         <div className="login__content">
-          <form action="" className="login__form">
+          <form action="" className="login__form" onSubmit={formik.handleSubmit}>
             <h2 className="login__title">{t('logIn')}</h2>
-            <Input formik={formik} type="loginUserName" focused />
+            <Input formik={formik} type="username" focused />
             <Input formik={formik} type="email" />
             <Input formik={formik} type="password" />
             <div className={formAlert} role="alert">

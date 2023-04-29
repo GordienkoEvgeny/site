@@ -175,3 +175,16 @@ body{
     color: #512689;
     border:1px solid #512689;
 }
+.text-danger {
+    margin-top: 8px;
+    font-size: 16px;
+    -webkit-animation: blink 1s linear infinite;
+    animation: blink 1.3s linear infinite;
+    font-weight: normal;
+}
+
+@keyframes blink {
+    0% { color: #F00; }
+    50% { color: #FBB; }
+    100% { color: #F00; }
+}
