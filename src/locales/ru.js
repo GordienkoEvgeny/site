@@ -2,7 +2,8 @@ export default {
   translation: {
     logIn: 'Войти',
     logOut: 'Выйти',
-    placeholderName: 'Ваш ник',
+    email: 'Электронная почта',
+    placeholderName: 'Имя',
     placeholderRegName: 'Имя пользователя',
     placeholderPass: 'Пароль',
     placeholderConfirmPass: 'Подтвердите пароль',

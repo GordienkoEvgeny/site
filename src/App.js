@@ -2,7 +2,9 @@ import {
   BrowserRouter as Router, Routes, Route,
   // Navigate,
 } from 'react-router-dom';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import i18next from 'i18next';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { initReactI18next } from 'react-i18next';
 import Header from './components/Header';
 import LoginPage from './pages/LoginPage';

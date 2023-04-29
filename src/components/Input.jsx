@@ -8,6 +8,7 @@ const keysTranslation = {
   password: 'placeholderPass',
   passwordConfirmation: 'placeholderConfirmPass',
   name: 'nameChannel',
+  email: 'Электронная почта',
 };
 
 const Input = ({ formik, type, focused }) => {
@@ -20,9 +21,15 @@ const Input = ({ formik, type, focused }) => {
     }
   }, [focused]);
   return (
-    <div className="mb-4">
+    <div className="login__form-input-group">
+      <label
+        className="login__form-label visually-hidden text-muted"
+        htmlFor={type}
+      >
+        {t(keysTranslation[type])}
+      </label>
       <input
-        className={formik.touched[type] && formik.errors[type] ? 'form-control is-invalid' : 'form-control'}
+        className={formik.touched[type] && formik.errors[type] ? 'login__form-input is-invalid' : 'login__form-input'}
         required=""
         id={type}
         name={type}
@@ -30,12 +37,6 @@ const Input = ({ formik, type, focused }) => {
         placeholder={t(keysTranslation[type])}
         ref={inputRef}
       />
-      <label
-        className="form-label visually-hidden text-muted"
-        htmlFor={type}
-      >
-        {t(keysTranslation[type])}
-      </label>
       {formik.touched[type] && formik.errors[type] ? (
         <div className="tal text-danger">{formik.errors[type]}</div>
       ) : null}

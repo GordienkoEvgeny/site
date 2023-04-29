@@ -46,13 +46,14 @@ const Login = () => {
       <div className="container">
         <div className="login__content">
           <form action="" className="login__form">
-            <h1 className="text-center mb-4">{t('logIn')}</h1>
+            <h2 className="login__title">{t('logIn')}</h2>
             <Input formik={formik} type="loginUserName" focused />
+            <Input formik={formik} type="email" />
             <Input formik={formik} type="password" />
             <div className={formAlert} role="alert">
               {errorAuth}
             </div>
-            <button onSubmit={formik.handleSubmit} disabled={formik.isSubmitting} type="submit" className="btn w-100 third ">{t('logIn')}</button>
+            <button onSubmit={formik.handleSubmit} disabled={formik.isSubmitting} type="submit" className="login__form-btn login__form-btn--text">{t('logIn')}</button>
           </form>
         </div>
       </div>
