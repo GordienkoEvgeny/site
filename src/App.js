@@ -20,6 +20,7 @@ import { useAuthorization } from './hooks/hooks';
 import { LoginContext } from './contexts/contexts';
 import Footer from './components/Footer';
 import store from './slices/index';
+import UserInfoPage from './pages/UserInfoPage';
 
 const AuthProv = ({ children }) => {
   const [authorizationStatus, setAuthorizationStatus] = useState(() => (
@@ -38,7 +39,7 @@ const AuthProv = ({ children }) => {
     </LoginContext.Provider>
   );
 };
-const UsersListRoute = ({ children }) => {
+const UsersRoute = ({ children }) => {
   const auth = useAuthorization();
   return (
     auth.authorizationStatus ? children : <Navigate to={paths.loginPagePath()} />
@@ -65,11 +66,19 @@ const App = () => {
               <Route path={paths.loginPagePath()} element={<LoginPage />} />
               <Route path={paths.signupPath()} element={<SignupPage />} />
               <Route
+                path={paths.userPagePath()}
+                element={(
+                  <UsersRoute>
+                    <UserInfoPage />
+                  </UsersRoute>
+                 )}
+              />
+              <Route
                 path={paths.mainPagePath()}
                 element={(
-                  <UsersListRoute>
+                  <UsersRoute>
                     <MainPage />
-                  </UsersListRoute>
+                  </UsersRoute>
                     )}
               />
             </Routes>

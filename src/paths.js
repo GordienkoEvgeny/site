@@ -6,4 +6,5 @@ export default {
   loginPagePath: () => '/login',
   usersPath: () => [apiPath, 'users?page=1'].join('/'),
   mainPagePath: () => '/',
+  userPagePath: () => '/user',
 };

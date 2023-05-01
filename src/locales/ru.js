@@ -1,8 +1,13 @@
 export default {
   translation: {
     logIn: 'Войти',
-    logOut: 'Выйти',
+    logOut: 'Выход',
+    back: 'Назад',
+    description: `Это опытные специалисты, хорошо разбирающиеся во всех задачах,
+              которые ложатся на их плечи, и умеющие находить выход из любых,
+              даже самых сложных ситуаций.`,
     email: 'Электронная почта',
+    ourTeam: 'Наша команда',
     emailErr: 'Неверный адрес электронной почты',
     placeholderName: 'Имя',
     placeholderRegName: 'Имя пользователя',
@@ -24,5 +29,6 @@ export default {
     uniqueNameError: 'Название должно быть уникальным',
     connectionErr: 'Ошибка сети',
     created: 'Evgeny Gordienko',
+    user: 'Пользователь',
   },
 };

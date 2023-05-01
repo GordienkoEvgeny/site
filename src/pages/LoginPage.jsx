@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-// import logInSignUpSchema from '../validation/validationSchemaLogInSignUp';
 import * as Yup from 'yup';
 import paths from '../paths';
 import { useAuthorization } from '../hooks/hooks';
@@ -45,9 +44,6 @@ const Login = () => {
       //   .required(t('errPasswordMatch')),
     }),
     onSubmit: async (values) => {
-      // console.log(values);
-      // eslint-disable-next-line max-len
-      // console.log(values, ' values');
       const dataToSend = {
         // username: values.username,
         email: values.email,
@@ -55,9 +51,7 @@ const Login = () => {
       };
       console.log(dataToSend, 'data');
       try {
-        // console.log(paths.loginPath());
         const response = await axios.post(paths.loginPath(), dataToSend);
-        console.log(response, 'response');
         localStorage.setItem('user', JSON.stringify(response.data));
         auth.logIn();
         redirect(paths.mainPagePath());

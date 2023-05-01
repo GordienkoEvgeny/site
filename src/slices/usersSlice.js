@@ -6,11 +6,15 @@ const usersAdapter = createEntityAdapter();
 const usersSlice = createSlice({
   name: 'users',
   initialState: usersAdapter.getInitialState({
-    currentUserId: 1,
+    currentUserId: null,
   }),
   reducers: {
     addUser: usersAdapter.addOne,
     addUsers: usersAdapter.addMany,
+    setCurrentUserId: (state, { payload }) => {
+      // eslint-disable-next-line no-param-reassign
+      state.currentUserId = payload;
+    },
   },
 });
 

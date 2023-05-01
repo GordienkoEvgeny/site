@@ -2,34 +2,35 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import paths from '../paths';
-// import { useAuthorization } from '../hooks/hooks';
 import { actions as usersActions, selectors as usersSelectors } from '../slices/usersSlice.js';
+import EscButton from '../components/EscapeButton';
+import { useAuthorization } from '../hooks/hooks';
 
 const MainPage = () => {
-  // const auth = useAuthorization();
+  const { t } = useTranslation();
+  const auth = useAuthorization();
+  const redirect = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     const responseUsers = async () => {
       try {
-        // const localStorageData = JSON.parse(localStorage.getItem('user'));
         const { data } = await axios.get(paths.usersPath());
         console.log(data, 'data');
         dispatch(usersActions.addUsers(data.data));
-        // dispatch(messagesActions.addMessages(data.messages));
-        // dispatch(channelsActions.setCurrentChannelId(data.currentChannelId));
       } catch (err) {
         // eslint-disable-next-line functional/no-conditional-statements
         if (err.response.status === 404) {
           console.log(err);
-          // auth.logOut();
+          auth.logOut();
         }
       }
     };
     responseUsers();
-  }, [dispatch]);
+  }, [auth, dispatch]);
   const { users } = useSelector((state) => {
-    console.log(state, 'STATE');
     const allUsers = usersSelectors.selectAll(state);
     return { users: allUsers };
   });
@@ -38,16 +39,12 @@ const MainPage = () => {
       <div className="container">
         <div className="main__team-list">
           <div className="main__team-list-head">
-            <button type="button" className="main__btn-esc">
-              Выход
-            </button>
+            <EscButton />
             <div className="main__head-title">
-              Наша команда
+              {t('ourTeam')}
             </div>
             <div className="main__head-text">
-              Это опытные специалисты, хорошо разбирающиеся во всех задачах,
-              которые ложатся на их плечи, и умеющие находить выход из любых,
-              даже самых сложных ситуаций.
+              {t('description')}
             </div>
           </div>
           <div className="main__team-list-items">
@@ -57,7 +54,14 @@ const MainPage = () => {
                 return (
                   <li className="main__item-card" key={item.id}>
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                    <a href="#" className="main__item-link">
+                    <a
+                      href="#"
+                      className="main__item-link"
+                      onClick={() => {
+                        dispatch(usersActions.setCurrentUserId(item.id));
+                        redirect(paths.userPagePath(), { item });
+                      }}
+                    >
                       <img className="main__item-img" src={item.avatar} alt="" />
                       <div className="main__full-name-item">
                         {`${item.first_name} ${item.last_name}`}
