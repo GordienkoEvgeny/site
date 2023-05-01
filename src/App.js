@@ -7,6 +7,8 @@ import i18next from 'i18next';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { initReactI18next } from 'react-i18next';
 import { useMemo, useState } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Provider } from 'react-redux';
 import Header from './components/Header';
 import LoginPage from './pages/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -17,6 +19,7 @@ import SignupPage from './pages/SignUpPage';
 import { useAuthorization } from './hooks/hooks';
 import { LoginContext } from './contexts/contexts';
 import Footer from './components/Footer';
+import store from './slices/index';
 
 const AuthProv = ({ children }) => {
   const [authorizationStatus, setAuthorizationStatus] = useState(() => (
@@ -50,27 +53,30 @@ const App = () => {
       resources,
       fallbackLng: 'ru',
     });
+  // eslint-disable-next-line react/no-unstable-nested-components
   return (
     <div className="App">
-      <AuthProv>
-        <Router>
-          <Header />
-          <Routes>
-            <Route path="*" element={<NotFoundPage />} />
-            <Route path={paths.loginPagePath()} element={<LoginPage />} />
-            <Route path={paths.signupPath()} element={<SignupPage />} />
-            <Route
-              path={paths.mainPagePath()}
-              element={(
-                <UsersListRoute>
-                  <MainPage />
-                </UsersListRoute>
+      <Provider store={store()}>
+        <AuthProv>
+          <Router>
+            <Header />
+            <Routes>
+              <Route path="*" element={<NotFoundPage />} />
+              <Route path={paths.loginPagePath()} element={<LoginPage />} />
+              <Route path={paths.signupPath()} element={<SignupPage />} />
+              <Route
+                path={paths.mainPagePath()}
+                element={(
+                  <UsersListRoute>
+                    <MainPage />
+                  </UsersListRoute>
                     )}
-            />
-          </Routes>
-          <Footer />
-        </Router>
-      </AuthProv>
+              />
+            </Routes>
+            <Footer />
+          </Router>
+        </AuthProv>
+      </Provider>
     </div>
   );
 };
