@@ -6,7 +6,7 @@ const EscButton = () => {
   const auth = useAuthorization();
   const { t } = useTranslation();
   return (
-    <button type="button" className="btn-esc" onClick={() => { auth.logOut(); }}>
+    <button className="btn-esc" type="button" onClick={() => { auth.logOut(); }}>
       {t('logOut')}
     </button>
   );

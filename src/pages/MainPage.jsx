@@ -71,6 +71,9 @@ const MainPage = () => {
                 );
               })}
             </ul>
+            <button className="main__show-more-btn" type="button">
+              Показать еще
+            </button>
           </div>
         </div>
       </div>

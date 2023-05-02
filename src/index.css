@@ -11,7 +11,11 @@ body{
     background-color: #dddddd;
     color: #151317
 }
-
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
 .container{
     max-width: 1440px;
     margin: 0 auto;
@@ -267,4 +271,98 @@ body{
     order: 0;
     align-self: stretch;
     flex-grow: 0;
+}
+.main__team-list{
+    margin: 25px 0 25px 0;
+}
+.main__team-list-head{
+    position: relative;
+    background-color: #512689;
+    width: 100%;
+    height: 265px;
+}
+.btn-esc{
+    position: absolute;
+    right: 80px;
+    top: 35px;
+    width: 81px;
+    height: 38px;
+    font-size: 16px;
+    line-height: 136%;
+    background-color: #512689;
+    color: #F8F8F8;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 8px;
+    border: 1px solid #F8F8F8;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.btn-esc:hover{
+    background-color: #ffffff;;
+    color: #512689;
+    border:1px solid #512689;
+}
+.main__head-title{
+    display: flex;
+    justify-content: center;
+    padding-top: 64px;
+    font-size: 64px;
+    line-height: 75px;
+    color: #FFFFFF;
+}
+.main__head-text{
+    padding: 16px 297px 16px;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    color: #F8F8F8;
+}
+.main__team-list-items{
+    width: 100%;
+    height: 100vh;
+    margin: 48px 80px 165px;
+}
+.main__team-items-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+.main__item-card{
+    cursor: pointer;
+    margin:0 20px 20px 0;
+    gap: 16px;
+    width: 305px;
+    height: 263px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: 0.3s ease;
+}
+.main__item-card:hover{
+    box-shadow: 0 0 0 5px rgba(81, 38, 137, 0.5);
+}
+.main__item-link{
+    display: block;
+    margin:36px auto;
+    text-align: center;
+    text-decoration:none;
+    height: 80%;
+}
+.main__item-img{
+    width: 124px;
+    height: 124px;
+    border-radius: 100px;
+}
+.main__full-name-item{
+    margin-top: 10px;
+    font-size: 20px;
+    line-height: 23px;
+
+    /* Black */
+
+    color: #151317;
 }
