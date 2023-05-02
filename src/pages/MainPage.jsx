@@ -9,6 +9,8 @@ import { actions as usersActions, selectors as usersSelectors } from '../slices/
 import EscButton from '../components/EscapeButton';
 import { useAuthorization } from '../hooks/hooks';
 import arrow from '../components/images/arrow.png';
+import like from '../components/images/like.png';
+// import likeActive from '../components/images/likeActive.png';
 
 const MainPage = () => {
   const [showMore, setShowMore] = useState(false);
@@ -16,11 +18,11 @@ const MainPage = () => {
   const auth = useAuthorization();
   const redirect = useNavigate();
   const dispatch = useDispatch();
+  console.log(showMore);
   useEffect(() => {
     const responseUsers = async (num) => {
       try {
         const { data } = await axios.get(paths.usersPath(num));
-        console.log(data, 'data');
         dispatch(usersActions.addUsers(data.data));
       } catch (err) {
         // eslint-disable-next-line functional/no-conditional-statements
@@ -55,30 +57,32 @@ const MainPage = () => {
           </div>
           <div className="main__team-list-items">
             <ul className="main__team-items-box">
-              {users && users.map((item) => {
-                console.log(item, 'ITEM');
-                return (
-                  <li className="main__item-card" key={item.id}>
-                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                    <a
-                      href="#"
-                      className="main__item-link"
-                      onClick={() => {
-                        dispatch(usersActions.setCurrentUserId(item.id));
-                        redirect(paths.userPagePath(), { item });
-                      }}
-                    >
-                      <img className="main__item-img" src={item.avatar} alt="" />
-                      <div className="main__full-name-item">
-                        {`${item.first_name} ${item.last_name}`}
-                      </div>
-                    </a>
-                  </li>
-                );
-              })}
+              {users && users.map((item) => (
+                <li className="main__item-card" key={item.id}>
+                  {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                  <a
+                    href="#"
+                    className="main__item-link"
+                    onClick={() => {
+                      dispatch(usersActions.setCurrentUserId(item.id));
+                      redirect(paths.userPagePath(), { item });
+                    }}
+                  >
+                    <img className="main__item-img" src={item.avatar} alt="" />
+                    <div className="main__full-name-item">
+                      {`${item.first_name} ${item.last_name}`}
+                    </div>
+                    <div className="main__like">
+                      <button className="main__like-item" type="button">
+                        <img className="main__like-img" src={like} alt="like" />
+                      </button>
+                    </div>
+                  </a>
+                </li>
+              ))}
             </ul>
             <div className="main__show-more">
-              <button className={showMore ? 'main__show-more-btn hide' : 'main__show-more-btn'} type="button" onClick={() => { setShowMore(true); }}>
+              <button className={showMore ? 'hide' : 'main__show-more-btn'} type="button" onClick={() => { setShowMore(true); }}>
                 <p className="main__show-more-text">Показать еще</p>
                 <img src={arrow} alt="показать еще" className="main__show-more-image" />
               </button>
