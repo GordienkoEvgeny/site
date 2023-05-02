@@ -29,6 +29,6 @@ export default {
     uniqueNameError: 'Название должно быть уникальным',
     connectionErr: 'Ошибка сети',
     created: 'Evgeny Gordienko',
-    user: 'Пользователь',
+    user: 'Партнер',
   },
 };
