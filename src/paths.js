@@ -4,7 +4,7 @@ export default {
   signupPath: () => '/register',
   loginPath: () => [apiPath, 'login'].join('/'),
   loginPagePath: () => '/login',
-  usersPath: () => [apiPath, 'users?page=1'].join('/'),
+  usersPath: (num) => [apiPath, `users?page=${num}`].join('/'),
   mainPagePath: () => '/',
   userPagePath: () => '/user',
 };

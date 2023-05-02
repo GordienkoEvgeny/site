@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,16 +8,18 @@ import paths from '../paths';
 import { actions as usersActions, selectors as usersSelectors } from '../slices/usersSlice.js';
 import EscButton from '../components/EscapeButton';
 import { useAuthorization } from '../hooks/hooks';
+import arrow from '../components/images/arrow.png';
 
 const MainPage = () => {
+  const [showMore, setShowMore] = useState(false);
   const { t } = useTranslation();
   const auth = useAuthorization();
   const redirect = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
-    const responseUsers = async () => {
+    const responseUsers = async (num) => {
       try {
-        const { data } = await axios.get(paths.usersPath());
+        const { data } = await axios.get(paths.usersPath(num));
         console.log(data, 'data');
         dispatch(usersActions.addUsers(data.data));
       } catch (err) {
@@ -28,8 +30,12 @@ const MainPage = () => {
         }
       }
     };
-    responseUsers();
-  }, [auth, dispatch]);
+    responseUsers(1);
+    // eslint-disable-next-line functional/no-conditional-statements
+    if (showMore) {
+      responseUsers(2);
+    }
+  }, [auth, dispatch, showMore]);
   const { users } = useSelector((state) => {
     const allUsers = usersSelectors.selectAll(state);
     return { users: allUsers };
@@ -71,9 +77,12 @@ const MainPage = () => {
                 );
               })}
             </ul>
-            <button className="main__show-more-btn" type="button">
-              Показать еще
-            </button>
+            <div className="main__show-more">
+              <button className={showMore ? 'main__show-more-btn hide' : 'main__show-more-btn'} type="button" onClick={() => { setShowMore(true); }}>
+                <p className="main__show-more-text">Показать еще</p>
+                <img src={arrow} alt="показать еще" className="main__show-more-image" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
