@@ -71,7 +71,7 @@ const UserInfo = () => {
             <div className="user-info__email">
               <img className="user-info__email-img" src={email} alt="электронная почта" />
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <a className="user-info__user-email" href="">
+              <a className="user-info__user-email" href={`mailto:${currentUser.email}`}>
                 {currentUser.email}
               </a>
             </div>

@@ -432,6 +432,7 @@ ul{
     color: #FFFFFF;
 }
 .user-info__about{
+    position: relative;
     margin-top: 50px;
     margin-left: 188px;
 }
@@ -441,6 +442,25 @@ ul{
     line-height: 22px;
 }
 .user-info__contacts{
-    margin-top: 50px;
-    margin-left: 130px;
+    position: absolute;
+    top: 50px;
+    right: 230px;
+}
+.user-info__email{
+    display: flex;
+    justify-content: center;
+}
+.user-info__email-img{
+    padding-top: 2px;
+    width: 21px;
+    height: 15px;
+}
+a.user-info__user-email{
+    padding-left: 10px;
+    text-decoration: none;
+    color: #151317;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 136.19%;
 }
