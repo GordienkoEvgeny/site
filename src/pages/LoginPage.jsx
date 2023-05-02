@@ -45,7 +45,6 @@ const Login = () => {
     }),
     onSubmit: async (values) => {
       const dataToSend = {
-        // username: values.username,
         email: values.email,
         password: values.password,
       };
