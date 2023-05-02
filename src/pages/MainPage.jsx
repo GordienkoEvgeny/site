@@ -9,11 +9,13 @@ import { actions as usersActions, selectors as usersSelectors } from '../slices/
 import EscButton from '../components/EscapeButton';
 import { useAuthorization } from '../hooks/hooks';
 import arrow from '../components/images/arrow.png';
+import likeDisable from '../components/images/likeDisable.png';
 import like from '../components/images/like.png';
-// import likeActive from '../components/images/likeActive.png';
 
 const MainPage = () => {
   const [showMore, setShowMore] = useState(false);
+  const [renderState, setRenderState] = useState(1);
+  console.log(renderState);
   const { t } = useTranslation();
   const auth = useAuthorization();
   const redirect = useNavigate();
@@ -63,7 +65,8 @@ const MainPage = () => {
                   <a
                     href="#"
                     className="main__item-link"
-                    onClick={() => {
+                    onClick={(e) => {
+                      e.preventDefault();
                       dispatch(usersActions.setCurrentUserId(item.id));
                       redirect(paths.userPagePath(), { item });
                     }}
@@ -72,12 +75,30 @@ const MainPage = () => {
                     <div className="main__full-name-item">
                       {`${item.first_name} ${item.last_name}`}
                     </div>
-                    <div className="main__like">
-                      <button className="main__like-item" type="button">
-                        <img className="main__like-img" src={like} alt="like" />
-                      </button>
-                    </div>
                   </a>
+                  <div className="main__like">
+                    <button
+                      className="main__like-item"
+                      type="button"
+                      onClick={() => {
+                        // eslint-disable-next-line functional/no-conditional-statements
+                        if (sessionStorage.getItem(`key${item.id}`)) {
+                          sessionStorage.removeItem(`key${item.id}`);
+                          setRenderState(renderState + 1);
+                          // eslint-disable-next-line functional/no-conditional-statements
+                        } else {
+                          sessionStorage.setItem(`key${item.id}`, 'likeActive');
+                          setRenderState(renderState + 1);
+                        }
+                      }}
+                    >
+                      <img
+                        className="main__like-img"
+                        src={sessionStorage.getItem(`key${item.id}`) === 'likeActive' ? like : likeDisable}
+                        alt="like"
+                      />
+                    </button>
+                  </div>
                 </li>
               ))}
             </ul>

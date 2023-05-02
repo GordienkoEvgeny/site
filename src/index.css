@@ -333,6 +333,7 @@ ul{
     justify-content: start;
 }
 .main__item-card{
+    position: relative;
     cursor: pointer;
     margin:0 20px 20px 0;
     gap: 16px;
@@ -351,7 +352,7 @@ ul{
     margin:36px auto;
     text-align: center;
     text-decoration:none;
-    height: 80%;
+    height: 85%;
 }
 .main__item-img{
     width: 124px;
@@ -491,12 +492,12 @@ a.user-info__user-email{
     color: #151317;
 }
 .main__like{
-    z-index: 100;
-    display: block;
-    margin: 15px 0;
-    padding-left: 205px;
+    position: absolute;
+    bottom:20px;
+    right: 20px;
 }
 .main__like-item{
+    z-index: 1000;
     flex: none;
     order: 0;
     flex-grow: 0;
