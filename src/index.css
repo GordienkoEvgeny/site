@@ -146,7 +146,7 @@ ul{
     padding: 12px 8px 12px 16px;
     gap: 8px;
     font-size: 16px;
-    max-width: 468px;
+    width: 468px;
     height: 30px;
 
     /* Gray_light */
@@ -567,6 +567,15 @@ a.user-info__user-email{
         max-width: 1000px;
         max-height: 100vh;
     }
+    .login__content{
+        height: 690px;
+    }
+    .signup__content{
+        height: 750px;
+    }
+    .registration__content{
+        padding-bottom: 15px;
+    }
 }
 
 @media (max-width: 1376px){
@@ -602,24 +611,21 @@ a.user-info__user-email{
         justify-content: center;
         max-width: 500px;
     }
-    .login__content{
-        /*height: 85vh;*/
+    .login__content,
+    .signup__content{
         margin: 25px 0 0 0 ;
     }
     .login__form{
-        max-width: 420px;
+        max-width: 430px;
     }
-    .login__form-input{
-        max-width: 350px;
+    .signup__form{
+        max-width: 430px;
     }
     .button-showPass-box{
         left: 334px;
     }
     .login-signup__form-input{
-        width: 375px;
-    }
-    .registration__content{
-        padding-bottom: 15px;
+        width: 402px;
     }
     .button-showPass-box{
         left: 0;
@@ -627,23 +633,56 @@ a.user-info__user-email{
     }
 }
 @media (max-width: 540px){
-    .login__content{
-
+    .login__content,
+    .signup__content{
+        min-width: 460px;
     }
-    .login__title{
+    .login__title,
+    .signup__title{
         width: 100%;
     }
+    .container{
+        padding: 0;
+    }
 }
-@media (max-width: 450px){
-    .login__form{
-        max-width: 335px;
+@media (max-width: 475px){
+    .login__content,
+    .signup__content{
+        min-width: 375px;
+    }
+    .login__form,
+    .signup__form{
+        max-width: 375px;
+    }
+    .login-signup__form-input{
+        width: 350px;
+    }
+    .button-showPass-box{
+        margin-left: 330px;
+    }
+}
+@media (max-width: 430px){
+    .login__content,
+    .signup__content{
+        min-width: 360px;
+    }
+    .login__form,
+    .signup__form{
+        max-width: 320px;
+    }
+    .login-signup__form-input{
+        width: 296px;
+    }
+    .button-showPass-box{
+        margin-left: 280px;
     }
 }
 @media (max-width: 375px){
-    .login__form{
-        max-width: 450px;
+    .login__form,
+    .signup__form{
+        max-width: 315px;
     }
     .login-signup__form-input{
-      max-width: 435px;
+        width: 295px;
     }
 }
