@@ -766,17 +766,18 @@ a.user-info__user-email{
 }
 }
 @media (max-width: 375px){
-.signup__content{
-   min-width: 340px;
-}
-.login__form,
-.signup__form{
-    max-width: 300px;
-}
-.login-signup__form-input{
-    width: 276px;
-}
-.button-showPass-box{
-    margin-left: 255px
-}
+    .login__content,
+    .signup__content{
+       min-width: 340px;
+    }
+    .login__form,
+    .signup__form{
+        max-width: 300px;
+    }
+    .login-signup__form-input{
+        width: 276px;
+    }
+    .button-showPass-box{
+        margin-left: 255px
+    }
 }
