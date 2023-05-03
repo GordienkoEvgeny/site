@@ -1,6 +1,7 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useTranslation } from 'react-i18next';
+import show from './images/show.png';
 
 const keysTranslation = {
   loginUserName: 'placeholderName',
@@ -12,6 +13,7 @@ const keysTranslation = {
 };
 
 const Input = ({ formik, type, focused }) => {
+  const [showPassword, setShowPassword] = useState(false);
   const inputRef = useRef();
   const { t } = useTranslation();
   useEffect(() => {
@@ -20,6 +22,15 @@ const Input = ({ formik, type, focused }) => {
       inputRef.current.focus();
     }
   }, [focused]);
+  const toggleShowPassword = () => {
+    // eslint-disable-next-line functional/no-conditional-statements
+    if (showPassword) {
+      setShowPassword(false);
+      // eslint-disable-next-line functional/no-conditional-statements
+    } else {
+      setShowPassword(true);
+    }
+  };
   return (
     <div className="login__form-input-group">
       <label
@@ -36,7 +47,15 @@ const Input = ({ formik, type, focused }) => {
         onChange={formik.handleChange}
         placeholder={t(keysTranslation[type])}
         ref={inputRef}
+        type={(type === 'password' && showPassword) || (type === 'passwordConfirmation' && showPassword) ? 'password' : 'text'}
       />
+      {type === 'password' || type === 'passwordConfirmation' ? (
+        <div className="button-showPass-box">
+          <button className="showPass" type="button" onClick={() => { toggleShowPassword(); }}>
+            <img src={show} alt="показать пароль" className="showPass__img" />
+          </button>
+        </div>
+      ) : '' }
       {formik.touched[type] && formik.errors[type] ? (
         <div className="tal text-danger">{formik.errors[type]}</div>
       ) : null}

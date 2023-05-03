@@ -88,6 +88,9 @@ ul{
     align-self: stretch;
     flex-grow: 0;
 }
+.login__form-input-group{
+    position: relative;
+}
 .login__form-label{
     gap: 24px;
     padding-bottom: 8px;
@@ -516,4 +519,14 @@ a.user-info__user-email{
 .main__like-img{
     width: 14px;
     height: 12px;
+}
+.button-showPass-box{
+    position: absolute;
+    right: 5px;
+    bottom: 9px;
+}
+.showPass{
+    border:none;
+    background-color: #F8F8F8;
+    cursor: pointer;
 }
