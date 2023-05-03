@@ -30,15 +30,15 @@ const Input = ({ formik, type, focused }) => {
     }
   };
   return (
-    <div className="login__form-input-group">
+    <div className="login-signup__form-input-group">
       <label
-        className="login__form-label visually-hidden text-muted"
+        className="login-signup__form-label visually-hidden text-muted"
         htmlFor={type}
       >
         {t(keysTranslation[type])}
       </label>
       <input
-        className={formik.touched[type] && formik.errors[type] ? 'login__form-input is-invalid' : 'login__form-input'}
+        className={formik.touched[type] && formik.errors[type] ? 'login-signup__form-input is-invalid' : 'login-signup__form-input'}
         required=""
         id={type}
         name={type}

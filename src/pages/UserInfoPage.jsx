@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-// import phone from '../components/images/phone.png';
 import email from '../components/images/email.png';
 import { selectors as usersSelectors } from '../slices/usersSlice';
 import paths from '../paths';
@@ -19,11 +18,11 @@ const UserInfo = () => {
     const filteredUser = allUsers.filter((item) => state.users.currentUserId === item.id);
     return { currentUser: filteredUser[0] };
   });
-  useEffect(() => {
-    window.onbeforeunload = () => {
-      redirect(paths.mainPagePath());
-    };
-  }, [redirect]);
+  // useEffect(() => {
+  //   window.onbeforeunload = () => {
+  //     redirect(paths.mainPagePath());
+  //   };
+  // }, [redirect]);
   return (
     <div className="user-info">
       <div className="container">
