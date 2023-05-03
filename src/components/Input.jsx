@@ -11,7 +11,7 @@ const keysTranslation = {
 };
 
 const Input = ({ formik, type, focused }) => {
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(true);
   const inputRef = useRef();
   const { t } = useTranslation();
   useEffect(() => {
@@ -45,7 +45,7 @@ const Input = ({ formik, type, focused }) => {
         onChange={formik.handleChange}
         placeholder={t(keysTranslation[type])}
         ref={inputRef}
-        type={(type === 'password' && showPassword) || (type === 'passwordConfirmation' && showPassword) ? 'text' : 'password'}
+        type={!(type === 'password' && showPassword) || (type === 'passwordConfirmation' && showPassword) ? 'text' : 'password'}
       />
       {type === 'password' || type === 'passwordConfirmation' ? (
         <div className="button-showPass-box">
