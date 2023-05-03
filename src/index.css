@@ -51,7 +51,7 @@ ul{
     padding: 16px;
     gap: 24px;
     background: #FFFFFF;
-    margin-top:100px;
+    margin-top:25px;
 
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     border-radius: 16px;
@@ -242,7 +242,7 @@ ul{
     background-color: #ffffff;
     display: flex;
     justify-content: center;
-    height: 75vh;
+    height: 82vh;
     box-shadow: 0 4px 20px #512689;
     border-radius: 16px;
     position: relative;
@@ -521,9 +521,9 @@ a.user-info__user-email{
     height: 12px;
 }
 .button-showPass-box{
-    position: absolute;
-    right: 5px;
-    bottom: 9px;
+    position: relative;
+    left: 448px;
+    bottom: 38px;
 }
 .showPass{
     border:none;
