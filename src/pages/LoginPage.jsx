@@ -1,16 +1,13 @@
+import cn from 'classnames';
+import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import cn from 'classnames';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { useTranslation } from 'react-i18next';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
 import paths from '../paths';
 import { useAuthorization } from '../hooks/hooks';
 import Input from '../components/Input';
+import validation from '../validation/loginSignupValidation';
 
 const Login = () => {
   const [successAuth, setSuccessAuth] = useState(false);
@@ -18,6 +15,7 @@ const Login = () => {
   const redirect = useNavigate();
   const { t } = useTranslation();
   const auth = useAuthorization();
+  const loginValidation = validation(null, t);
   const formAlert = cn({ 'alert-danger form-control is-invalid': successAuth, alert: successAuth });
   const formik = useFormik({
     initialValues: {
@@ -25,30 +23,12 @@ const Login = () => {
       email: '',
       password: '',
     },
-    validationSchema: Yup.object().shape({
-      username: Yup.string().trim().min(
-        3,
-        t('errNameSymbol3'),
-      )
-        .max(20, t('errNameSymbol20'))
-        .required(t('errField')),
-      email: Yup.string().email(t('emailErr')).required(t('errField')),
-      password: Yup.string().trim().min(
-        6,
-        t('errPassSymbol6'),
-      )
-        .max(20, t('errPassSymbol20'))
-        .required(t('errField')),
-      // passwordConfirmation: Yup.string()
-      //   .oneOf([Yup.ref('password'), null], t('errPasswordMatch'))
-      //   .required(t('errPasswordMatch')),
-    }),
+    validationSchema: loginValidation.validationSchema,
     onSubmit: async (values) => {
       const dataToSend = {
         email: values.email,
         password: values.password,
       };
-      console.log(dataToSend, 'data');
       try {
         const response = await axios.post(paths.loginPath(), dataToSend);
         localStorage.setItem('user', JSON.stringify(response.data));
@@ -63,7 +43,6 @@ const Login = () => {
       }
     },
   });
-  console.log(formik.errors);
   return (
     <div className="login">
       <div className="container">

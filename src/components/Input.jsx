@@ -1,10 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { useTranslation } from 'react-i18next';
 import show from './images/show.png';
 
 const keysTranslation = {
-  loginUserName: 'placeholderName',
   username: 'placeholderRegName',
   password: 'placeholderPass',
   passwordConfirmation: 'placeholderConfirmPass',

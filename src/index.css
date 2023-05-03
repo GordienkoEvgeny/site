@@ -333,7 +333,6 @@ ul{
 .main__team-items-box{
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
 }
 .main__item-card{
     position: relative;

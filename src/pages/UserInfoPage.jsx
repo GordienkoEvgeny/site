@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -19,7 +19,11 @@ const UserInfo = () => {
     const filteredUser = allUsers.filter((item) => state.users.currentUserId === item.id);
     return { currentUser: filteredUser[0] };
   });
-  console.log(currentUser);
+  useEffect(() => {
+    window.onbeforeunload = () => {
+      redirect(paths.mainPagePath());
+    };
+  }, [redirect]);
   return (
     <div className="user-info">
       <div className="container">
