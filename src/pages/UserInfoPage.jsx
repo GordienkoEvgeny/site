@@ -2,27 +2,19 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import email from '../components/images/email.png';
 import { selectors as usersSelectors } from '../slices/usersSlice';
+import email from '../components/images/email.png';
 import paths from '../paths';
 import EscButton from '../components/EscapeButton';
 
 const UserInfo = () => {
   const { t } = useTranslation();
   const redirect = useNavigate();
-  // eslint-disable-next-line consistent-return
   const { currentUser } = useSelector((state) => {
-    console.log(state, 'STATE');
     const allUsers = usersSelectors.selectAll(state);
-    console.log(allUsers, 'allUsers');
     const filteredUser = allUsers.filter((item) => state.users.currentUserId === item.id);
     return { currentUser: filteredUser[0] };
   });
-  // useEffect(() => {
-  //   window.onbeforeunload = () => {
-  //     redirect(paths.mainPagePath());
-  //   };
-  // }, [redirect]);
   return (
     <div className="user-info">
       <div className="container">

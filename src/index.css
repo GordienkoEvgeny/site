@@ -181,7 +181,7 @@ ul{
     order: 0;
     flex-grow: 1;
 }
-.login__form-btn{
+.login-signup__form-btn{
     margin: 0 auto;
     width: 100%;
     display: flex;
@@ -207,12 +207,15 @@ ul{
     cursor: pointer;
     transition: 0.3s ease;
 }
-.login__form-btn--text{
+.login-signup__form-btn:disabled{
+    background-color: #6d6b6b;
+}
+.login-signup__form-btn--text{
     font-size: 16px;
     color: #FFFFFF;
 
 }
-.login__form-btn:hover{
+.login-signup__form-btn:hover{
     background-color: #ffffff;;
     color: #512689;
     border:1px solid #512689;

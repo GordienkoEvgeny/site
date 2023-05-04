@@ -18,7 +18,6 @@ import MainPage from './pages/MainPage';
 import SignupPage from './pages/SignUpPage';
 import { useAuthorization } from './hooks/hooks';
 import { LoginContext } from './contexts/contexts';
-// import Footer from './components/Footer';
 import store from './slices/index';
 import UserInfoPage from './pages/UserInfoPage';
 

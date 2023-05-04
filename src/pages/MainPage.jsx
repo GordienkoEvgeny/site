@@ -15,12 +15,10 @@ import like from '../components/images/like.png';
 const MainPage = () => {
   const [showMore, setShowMore] = useState(false);
   const [renderState, setRenderState] = useState(1);
-  console.log(renderState);
   const { t } = useTranslation();
   const auth = useAuthorization();
   const redirect = useNavigate();
   const dispatch = useDispatch();
-  console.log(showMore);
   useEffect(() => {
     const responseUsers = async (num) => {
       try {

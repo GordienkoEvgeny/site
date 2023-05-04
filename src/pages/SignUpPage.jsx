@@ -63,7 +63,7 @@ const SignUp = () => {
             <div className={formAlert} role="alert">
               {registrationError}
             </div>
-            <button onSubmit={formik.handleSubmit} disabled={formik.isSubmitting} type="submit" className="login__form-btn login__form-btn--text">{t('register')}</button>
+            <button onSubmit={formik.handleSubmit} disabled={formik.isSubmitting} type="submit" className="login-signup__form-btn login-signup__form-btn--text">{t('register')}</button>
           </form>
         </div>
       </div>
