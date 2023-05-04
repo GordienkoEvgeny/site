@@ -597,7 +597,7 @@ a.user-info__user-email{
         top:-15px;
     }
     .user-info__about-text{
-        padding-top: 34px;
+        padding: 34px 0 34px 0;
     }
 }
 
@@ -637,6 +637,7 @@ a.user-info__user-email{
     }
     .user-info__head-inner{
         left:225px;
+        text-align: center;
     }
     .user-info__head-role{
         padding-left: 103px;
@@ -781,22 +782,37 @@ a.user-info__user-email{
         background-color: #512689;
     }
     .user-info__btn-back{
+        width: 40px;
+        height: 40px;
+        font-size: 0;
         background-image: url("./components/images/back-btn.png");
         background-repeat: no-repeat;
         background-position: center center;
-        background-size: cover;
-        text-decoration: none;
-        font-size: 0;
-        width: 7px;
-        height: 14px;
         border: none;
-        border-radius: 0;
-        padding: 0;
-        left: 34px;
-        top: 25px;
+        left: 16px;
+        top: 12px;
+    }
+    .user-info__btn-back:hover{
+        border: none;
+        background-color: #512689;
     }
     .user-info__head-inner {
-        left: 100px;
+        left: 0;
+        height: 0;
+        margin-top: 64px;
+    }
+    .user-info__head-title{
+        font-size: 36px;
+        line-height: 42px;
+        padding-left: 146px;
+    }
+    .user-info__head-role{
+        font-size: 20px;
+        line-height: 23px;
+        padding-left: 205px;
+    }
+    .user-info__head-photo {
+        left: 155px;
     }
 }
 @media (max-width: 540px){
@@ -816,36 +832,57 @@ a.user-info__user-email{
     }
 }
 @media (max-width: 475px){
-.login__content,
-.signup__content{
-    min-width: 375px;
-}
-.login__form,
-.signup__form{
-    max-width: 375px;
-}
-.login-signup__form-input{
-    width: 350px;
-}
-.button-showPass-box{
-    margin-left: 330px;
-}
+    .login__content,
+    .signup__content{
+        min-width: 375px;
+    }
+    .login__form,
+    .signup__form{
+        max-width: 375px;
+    }
+    .login-signup__form-input{
+        width: 350px;
+    }
+    .button-showPass-box{
+        margin-left: 330px;
+    }
+    .user-info__head-inner{
+        width: 325px;
+    }
+    .user-info__head-title {
+        padding-left: 110px;
+    }
+    .user-info__head-role {
+        padding-left: 172px;
+    }
+    .user-info__head-photo {
+        left: 124px;
+    }
 }
 @media (max-width: 430px){
-.login__content,
-.signup__content{
-    min-width: 360px;
-}
-.login__form,
-.signup__form{
-    max-width: 320px;
-}
-.login-signup__form-input{
-    width: 296px;
-}
-.button-showPass-box{
-    margin-left: 280px;
-}
+    .login__content,
+    .signup__content{
+        min-width: 360px;
+    }
+    .login__form,
+    .signup__form{
+        max-width: 320px;
+    }
+    .login-signup__form-input{
+        width: 296px;
+    }
+    .button-showPass-box{
+        margin-left: 280px;
+    }
+    .user-info__head-title {
+        padding-left: 90px;
+    }
+    .user-info__head-role {
+        padding-left: 152px;
+    }
+    .user-info__head-photo {
+        left: 100px;
+    }
 }
 @media (max-width: 375px){
     .login__content,
@@ -861,5 +898,14 @@ a.user-info__user-email{
     }
     .button-showPass-box{
         margin-left: 255px
+    }
+    .user-info__head-title {
+        padding-left: 76px;
+    }
+    .user-info__head-role {
+        padding-left: 136px;
+    }
+    .user-info__head-photo {
+        left: 88px;
     }
 }
