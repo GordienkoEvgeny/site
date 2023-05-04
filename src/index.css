@@ -14,7 +14,7 @@ body{
     font-size: 14px;
     line-height: 18px;
     font-weight: 400;
-    /*overflow-x: hidden;*/
+    overflow-x: hidden;
     background-color: white;
     color: #151317;
 }
@@ -452,7 +452,7 @@ ul{
     gap: 16px;
 
     position: absolute;
-    width: 445px;
+    width: 600px;
     height: 129px;
     left: 425px;
     top: 29px;
@@ -583,6 +583,9 @@ a.user-info__user-email{
     .registration__content{
         padding-bottom: 15px;
     }
+    .user-info__head-title{
+        font-size: 54px;
+    }
     .main__team-list-items{
         margin-left: 18px;
     }
@@ -612,7 +615,6 @@ a.user-info__user-email{
 
     .container {
         max-width: 800px
-        /*margin-left: 80px;*/
     }
 
     .btn-esc {
@@ -636,11 +638,15 @@ a.user-info__user-email{
         top: 174px;
     }
     .user-info__head-inner{
-        left:225px;
+        left:238px;
         text-align: center;
     }
+    .user-info__head-title{
+        font-size: 54px;
+        /*padding-left: 15px;*/
+    }
     .user-info__head-role{
-        padding-left: 103px;
+        padding-left: 90px;
     }
     .user-info__about {
         margin-left: 90px;
@@ -660,7 +666,10 @@ a.user-info__user-email{
         padding-right: 68px;
     }
     .user-info__head-inner {
-        left: 158px;
+        left: 148px;
+    }
+    .user-info__head-inner{
+        width: 468px;
     }
     .user-info__btn-back{
         left:40px;
@@ -706,10 +715,10 @@ a.user-info__user-email{
         padding-right: 23px;
     }
     .user-info__head-inner{
-        left:148px;
+        left:150px;
     }
     .user-info__head-title{
-        font-size: 50px;
+        font-size: 45px;
     }
     .user-info__btn-back{
         left: 20px;
@@ -847,7 +856,7 @@ a.user-info__user-email{
         margin-left: 330px;
     }
     .user-info__head-inner{
-        width: 325px;
+        width: 340px;
     }
     .user-info__head-title {
         padding-left: 110px;
